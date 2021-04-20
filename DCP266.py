@@ -14,24 +14,25 @@ from collections import Counter #Counter keeps a count of all the characters in 
 
 #Loop through a dictionary:
 def DictionaryLoop(string1, dictionary):
-    EqualLength = []
+    EqualLength = [] 
     for i in dictionary:
         if len(i) == len(string1)+1:
             EqualLength.append(i)
-    print(EqualLength)
+    return (EqualLength)
             
     
-print(DictionaryLoop("silent", ["listens", "cat", "shreya"]))
+dictword = DictionaryLoop("silent", ["listens", "cat", "shreya", "alaisha"])
 
 
-def StepWord(string1, string2):
+def StepWord(string1, dictword):
     str1 = list(string1)
-    str2 = list(string2)
-    diff = list((Counter(str1)-Counter(str2)).elements())
-    if len(diff) == 1:
-        print(string1, "is a step word of", string2)
-    else:
-        print (string1, "is not a stepword of", string2)
+    for i in dictword:
+        str2 = list(i)
+        diff = list((Counter(str2)-Counter(str1)).elements())
+        if len(diff) == 1:
+            print(i, "is a step word of", string1)
+        else:
+            print (i, "is not a stepword of", string1)
 
-print(StepWord("listens", "silent"))
+print(StepWord("silent", dictword))
 
